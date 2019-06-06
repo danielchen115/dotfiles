@@ -12,6 +12,8 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'ajh17/spacegray.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'majutsushi/tagbar'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()
 
@@ -39,7 +41,7 @@ set shiftwidth=4
 
 augroup twospaces
 	autocmd!
-	autocmd FileType json,html setlocal expandtab ts=2 sts=2 sw=2
+	autocmd FileType json,html,ruby setlocal expandtab ts=2 sts=2 sw=2
 augroup END
 
 augroup fourspaces
@@ -74,11 +76,10 @@ endfunction
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * call InsertLeaveActions()
 
-set statusline=[%n]\ %t
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set statusline+=%=%l:%c
+" Airline configuration
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Check PSR-2 on php files and show errors at the bottom
 let g:syntastic_always_populate_loc_list = 1

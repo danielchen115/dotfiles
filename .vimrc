@@ -14,6 +14,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'cocopon/iceberg.vim'
 
 call vundle#end()
 
@@ -22,6 +23,7 @@ set background=dark
 let g:solarized_termcolors=256
 " colorscheme solarized
 colorscheme spacegray
+" colorscheme iceberg
 
 filetype plugin indent on
 
@@ -81,11 +83,17 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-" Check PSR-2 on php files and show errors at the bottom
+" Syntastic configuration
+set statusline=[%n]\ %t
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+set statusline+=%=%l:%c
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 
 let g:syntastic_javascript_checkers=['jshint']
 
